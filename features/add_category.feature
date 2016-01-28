@@ -11,8 +11,7 @@ Feature: Add Category
     Given I am on the categories page
     And I fill in "category_name" with "Music"
     And I fill in "category_keywords" with "fun"
-    And I fill in "category_permalink" with "/music"
     And I fill in "category_description" with "Music related stuff"
     And I press "Save"
-    Then I should be on the articles page
+    Then I should be on the categories page
     And I should see "Music"
