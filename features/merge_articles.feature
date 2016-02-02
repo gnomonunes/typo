@@ -6,6 +6,10 @@ Feature: Merge Articles
   Background:
     Given an administrator with login 'admin'
     And a blog publisher with login 'publisher'
+    And following articles exist:
+    | title           | body           | state     |
+    | title article 1 | body article 1 | published |
+    | title article 2 | body article 2 | published |
 
   Scenario: admin edits an article
     Given I am logged in as admin
