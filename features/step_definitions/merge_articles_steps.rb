@@ -23,6 +23,7 @@ end
 
 And /^the following articles exist:$/ do |articles_table|
   articles_table.hashes.each do |article|
+    article[:user_id] = User.find_by_login('publisher').id
     Article.create(article)
   end
 end
@@ -43,5 +44,10 @@ And /^I am editing an article titled "(.+)"$/ do |title|
   visit path_to("edit article '#{title}'")
 end
 
-Then /^I should see the (.+) field$/ do |field_name|
+Then /^I should see the "(.+)" field$/ do |field_name|
+  expect(page).to have_field(field_name)
+end
+
+Then /^I should not see the "(.+)" field$/ do |field_name|
+  expect(page).not_to have_field(field_name)
 end
